@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WeatherForecast</string>
+    <string name="action_today_weather">Today</string>
+    <string name="action_week_weather">Week</string>
+    <string name="hint_please_enter_location">Please Enter Location</string>
+    <string name="button_today_view">Today View</string>
+    <string name="button_week_view">Week View</string>
+</resources>
