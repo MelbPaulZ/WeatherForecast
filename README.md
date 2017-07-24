@@ -4,14 +4,14 @@ This is a demo project of showing Android knowledge, the purpose is for internsh
 
 For this sample application, I have used following technology.
 
-`
+
 1. Databinding
 2. RxJava
 3. Retrofit
 4. MVP (Model-View-Presenter) + ViewModel project structure
 5. Reflection (In order to simplify codes)
 6. Some thrid party libraries
-`
+
 
 Github Link:
 https://github.com/MelbPaulZ/WeatherForecast
