@@ -15,14 +15,12 @@ import rx.schedulers.Schedulers;
  */
 
 public class NetworkUtil {
-    private static Retrofit retrofit;
-    public static Retrofit getRetrofit(){
-        if (retrofit==null) {
-            retrofit = new Retrofit.Builder().baseUrl(NetworkBase.BaseUrl)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .build();
-        }
+
+    public static Retrofit getRetrofit(String baseUrl){
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
         return retrofit;
     }
 

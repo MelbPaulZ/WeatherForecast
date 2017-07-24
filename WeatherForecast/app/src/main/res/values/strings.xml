@@ -5,4 +5,13 @@
     <string name="hint_please_enter_location">Please Enter Location</string>
     <string name="button_today_view">Today View</string>
     <string name="button_week_view">Week View</string>
+    
+    <string name="location_name">Location : </string>
+    <string name="temperature">Temperature : </string>
+    <string name="max_temperature">Max Temperature : </string>
+    <string name="min_temperature">Min Temperature : </string>
+    <string name="weather_description">Description : </string>
+    <string name="weather_main">Main : </string>
+    <string name="pressure">Pressure : </string>
+    <string name="Date">Date : </string>
 </resources>

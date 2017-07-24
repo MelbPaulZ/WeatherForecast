@@ -9,15 +9,14 @@ import com.hannesdorfmann.mosby.mvp.MvpView;
 import org.paul.weatherforecast.Util.NetworkUtil;
 import org.paul.weatherforecast.base.NetworkBase;
 import org.paul.weatherforecast.bean.OpenWeatherBean;
+import org.paul.weatherforecast.bean.WeatherDay;
 import org.paul.weatherforecast.retrofit.ForecastApi;
+import org.paul.weatherforecast.today.TodayMvpView;
+import org.paul.weatherforecast.week.WeekMvpView;
 
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Subscriber;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+
 
 /**
  * Created by Paul on 18/7/17.
@@ -25,14 +24,13 @@ import rx.schedulers.Schedulers;
 
 public class LocationForecastPresenter<V extends MvpView> extends MvpBasePresenter<V> {
     private Context context;
-    private Retrofit retrofit;
-
     public LocationForecastPresenter(Context context) {
         this.context = context;
     }
 
     public void fetchForecast(String location){
-        retrofit = NetworkUtil.getRetrofit();
+
+        Retrofit retrofit = NetworkUtil.getRetrofit(NetworkBase.SingleDateUrl);
         ForecastApi forecastApi = retrofit.create(ForecastApi.class);
         NetworkUtil.subscribe(forecastApi.fetchWeather(location), new Subscriber<OpenWeatherBean>() {
             @Override
@@ -42,12 +40,45 @@ public class LocationForecastPresenter<V extends MvpView> extends MvpBasePresent
 
             @Override
             public void onError(Throwable e) {
-                Log.i("", "onError: "  );
+                TodayMvpView view = (TodayMvpView) getView();
+                if (view!=null){
+                    view.onFailed();
+                }
             }
 
             @Override
             public void onNext(OpenWeatherBean openWeatherBean) {
-                Log.i("", "onNext: ");
+                TodayMvpView view = (TodayMvpView) getView();
+                if (view!=null){
+                    view.onSuccess(openWeatherBean);
+                }
+            }
+        });
+    }
+
+    public void fetchSevenDaysForecast(String location){
+        Retrofit retrofit = NetworkUtil.getRetrofit(NetworkBase.SevenDaysUtl);
+        ForecastApi forecastApi = retrofit.create(ForecastApi.class);
+        NetworkUtil.subscribe(forecastApi.fetchSevenDaysWeather(location), new Subscriber<WeatherDay>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                WeekMvpView view = (WeekMvpView) getView();
+                if (view!=null){
+                    view.onFailed();
+                }
+            }
+
+            @Override
+            public void onNext(WeatherDay weatherDay) {
+                WeekMvpView view = (WeekMvpView) getView();
+                if (view!=null){
+                    view.onSuccess(weatherDay);
+                }
             }
         });
     }

@@ -5,6 +5,6 @@ package org.paul.weatherforecast.base;
  */
 
 public class NetworkBase {
-    public static String BaseUrl = "http://api.openweathermap.org/data/2.5/";
-    public static String SampleUrl = "http://samples.openweathermap.org/data/2.5/";
+    public static String SingleDateUrl = "http://api.openweathermap.org/data/2.5/";
+    public static String SevenDaysUtl = "http://api.openweathermap.org/data/2.5/forecast/";
 }

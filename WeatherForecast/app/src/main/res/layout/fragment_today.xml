@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="org.paul.weatherforecast.today.TodayViewModel" />
+        <import type="android.view.View"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/today_network_processing"
+            android:layout_centerInParent="true"
+            app:indicatorColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:indicatorName="LineScaleIndicator" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{vm.openWeatherBean==null? View.GONE : View.VISIBLE}"
+            android:orientation="vertical">
+
+            <!--location-->
+            <LinearLayout style="@style/today_linear_cell">
+
+                <TextView
+                    style="@style/today_linear_cell_left"
+                    android:text="@string/location_name" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.openWeatherBean.name}" />
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/today_linear_cell">
+
+                <TextView
+                    style="@style/today_linear_cell_left"
+                    android:text="@string/temperature" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(vm.openWeatherBean.main.temp)}" />
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/today_linear_cell">
+
+                <TextView
+                    style="@style/today_linear_cell_left"
+                    android:text="@string/max_temperature" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(vm.openWeatherBean.main.temMax)}" />
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/today_linear_cell">
+
+                <TextView
+                    style="@style/today_linear_cell_left"
+                    android:text="@string/min_temperature" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(vm.openWeatherBean.main.tempMin)}" />
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/today_linear_cell">
+
+                <TextView
+                    style="@style/today_linear_cell_left"
+                    android:text="@string/weather_description" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.openWeatherBean.weather[0].description}" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/today_linear_cell">
+
+                <TextView
+                    style="@style/today_linear_cell_left"
+                    android:text="@string/weather_main" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.openWeatherBean.weather[0].main}" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/today_linear_cell">
+
+                <TextView
+                    style="@style/today_linear_cell_left"
+                    android:text="@string/pressure" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(vm.openWeatherBean.main.pressure)}" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="oneDayVM"
+            type="org.paul.weatherforecast.week.RowOneDayViewModel"/>
+    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fafafa"
+    android:padding="10dp">
+    <LinearLayout
+        style="@style/today_linear_cell">
+        <TextView
+            style="@style/today_linear_cell_left"
+            android:text="@string/Date"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{oneDayVM.date}"/>
+        
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/today_linear_cell">
+        <TextView
+            style="@style/today_linear_cell_left"
+            android:text="@string/weather_main"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{oneDayVM.oneDay.weather[0].main}"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/today_linear_cell">
+        <TextView
+            style="@style/today_linear_cell_left"
+            android:text="@string/temperature"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(oneDayVM.oneDay.temp.day)}"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/today_linear_cell">
+        <TextView
+            style="@style/today_linear_cell_left"
+            android:text="@string/max_temperature"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(oneDayVM.oneDay.temp.max)}"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/today_linear_cell">
+        <TextView
+            style="@style/today_linear_cell_left"
+            android:text="@string/min_temperature"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(oneDayVM.oneDay.temp.min)}"/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/today_linear_cell">
+        <TextView
+            style="@style/today_linear_cell"
+            android:text="@string/weather_description"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{oneDayVM.oneDay.weather[0].description}"/>
+    </LinearLayout>
+</LinearLayout>
+</layout>

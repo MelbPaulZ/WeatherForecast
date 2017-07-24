@@ -11,9 +11,9 @@ import org.paul.weatherforecast.BR;
 
 public class LocationForecastViewModel extends BaseObservable {
     private String location;
-    private LocationForecastPresenter presenter;
+    private LocationForecastPresenter<LocationForecastMvpView> presenter;
 
-    public LocationForecastViewModel(LocationForecastPresenter presenter) {
+    public LocationForecastViewModel(LocationForecastPresenter<LocationForecastMvpView> presenter) {
         this.presenter = presenter;
     }
 
@@ -28,6 +28,16 @@ public class LocationForecastViewModel extends BaseObservable {
     }
 
     public void onFetchTodaysForecast(){
-        presenter.fetchForecast(location);
+        LocationForecastMvpView mvpView = presenter.getView();
+        if (mvpView!=null){
+            mvpView.onClickToday(location);
+        }
+    }
+
+    public void onFetchSevenDaysForecast(){
+        LocationForecastMvpView mvpView = presenter.getView();
+        if (mvpView!=null){
+            mvpView.onClickWeek(location);
+        }
     }
 }

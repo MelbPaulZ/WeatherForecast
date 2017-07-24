@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="vm"
+            type="org.paul.weatherforecast.week.WeekViewModel"/>
+        <import type="me.tatarka.bindingcollectionadapter2.LayoutManagers" />
+    </data>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/week_network_processing"
+        android:layout_centerInParent="true"
+        app:indicatorColor="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:indicatorName="LineScaleIndicator" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="@{LayoutManagers.linear()}"
+        app:items="@{vm.items}"
+        app:itemBinding="@{vm.itemBinding}"
+        />
+
+</RelativeLayout>
+</layout>
