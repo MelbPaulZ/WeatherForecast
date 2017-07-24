@@ -17,6 +17,9 @@ For this sample application, I have used following technology.
 Github Link:
 https://github.com/MelbPaulZ/WeatherForecast
 
+Gist Link:
+https://gist.github.com/MelbPaulZ/590919229b704da18f15b0e769de6dc4
+
 For this project, I have tried to demonstrate my knowledge of Android development, including some modern technologies.
 I have used MVP as a project structure, in order to better split each function.
 Using databinding to bind UI views to data change.
